@@ -6,9 +6,9 @@ const copy = async () => {
 
     await mkdir("./files_copy");
 
-    files.forEach(async (file) => {
-      await copyFile(`./files/${file}`, `./files_copy/${file}`);
-    });
+    for await (const file of files) {
+      copyFile(`./files/${file}`, `./files_copy/${file}`);
+    }
   } catch {
     throw new Error("FS operation failed");
   }
